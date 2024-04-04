@@ -31,7 +31,7 @@ public class ApiController {
 
     @PostMapping("/encryption")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> dataEncryption(@RequestParam String data) {
+    public ResponseEntity<?> dataEncryption(@RequestParam(value = "data",required = false) String data) {
         try {
             ResponseDto response = encryptionDecryptionService.dataEncryption(data);
             return ResponseHandler.generateResponse("Request process Successfully", HttpStatus.OK, response);
@@ -44,7 +44,7 @@ public class ApiController {
 
     @PostMapping("/decryption")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> dataDecryption(@RequestParam String data) {
+    public ResponseEntity<?> dataDecryption(@RequestParam(value = "data") String data) {
         try {
             ResponseDto response = encryptionDecryptionService.dataDecryption(data);
             return ResponseHandler.generateResponse("Request process Successfully", HttpStatus.OK, response);
